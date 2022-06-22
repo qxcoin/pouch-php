@@ -1,0 +1,23 @@
+{
+    "name": "qxcoin/pouch",
+    "description": "Multi-Coin HD wallet generator.",
+    "license": "MIT",
+    "require": {
+        "tuupola/base58": "^2.1",
+        "bitwasp/bech32": "^0.0.1",
+        "qxcoin/bip39": "^0.0.1",
+        "qxcoin/bip32": "^0.0.1",
+        "kornrunner/keccak": "^1.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "QXCoin\\Pouch\\": "src"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    }
+}
