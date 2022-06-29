@@ -9,7 +9,7 @@ namespace QXCoin\Pouch\Wallet;
  * This is why we store public and private keys as hexadecimal string here.
  * This class has nothing to do with BIP44 or any other strategy.
  */
-class Address
+final class Address
 {
     /**
      * @param string $hash Address hash

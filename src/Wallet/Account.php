@@ -5,7 +5,7 @@ namespace QXCoin\Pouch\Wallet;
 /**
  * A class to represent BIP44 account segment
  */
-class Account
+final class Account
 {
     /**
      * @param string $privateKey Serialized BIP32 private key

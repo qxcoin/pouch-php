@@ -3,12 +3,9 @@
 namespace QXCoin\Pouch\Networks;
 
 use QXCoin\BIP32\BitcoinVersionResolver;
-use QXCoin\Pouch\Address\P2WPKHAddressGenerator;
 use QXCoin\BIP32\VersionResolverInterface;
 use QXCoin\Pouch\Address\TronAddressGenerator;
 use QXCoin\Pouch\PrivateKey\TronPrivateKeyGenerator;
-use QXCoin\Pouch\PrivateKey\WIFPrivateKeyGenerator;
-use QXCoin\Pouch\PublicKey\BitcoinCompressedPublicKeyGenerator;
 use QXCoin\Pouch\PublicKey\TronPublicKeyGenerator;
 
 class TronNetwork implements NetworkInterface
