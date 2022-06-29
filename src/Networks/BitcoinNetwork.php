@@ -17,9 +17,14 @@ class BitcoinNetwork implements NetworkInterface
         $this->testnet = $testnet;
     }
 
-    public function getBip32VersionResolver(): VersionResolverInterface
+    public function getBip32PublicVersionBytes(): int
     {
-        return new BitcoinVersionResolver($this->testnet);
+        return $this->testnet ? 0x43587cf : 0x488b21e;
+    }
+
+    public function getBip32PrivateVersionBytes(): int
+    {
+        return $this->testnet ? 0x4358394 : 0x488ade4;
     }
 
     public function getP2pkhPrefix(): int

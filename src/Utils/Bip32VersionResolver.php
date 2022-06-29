@@ -4,26 +4,29 @@ namespace QXCoin\Pouch\Utils;
 
 use QXCoin\BIP32\VersionResolverInterface;
 use InvalidArgumentException;
+use QXCoin\Pouch\Networks\NetworkInterface;
 
+/**
+ * An *Adapter* class to convert NetworkInterface to VersionResolverInterface
+ * Expected by BIP32 package.
+ */
 class Bip32VersionResolver implements VersionResolverInterface
 {
-    private readonly int $publicVersionBytes;
-    private readonly int $privateVersionBytes;
+    private NetworkInterface $network;
 
-    public function __construct(int $publicVersionBytes, int $privateVersionBytes)
+    public function __construct(NetworkInterface $network)
     {
-        $this->publicVersionBytes = $publicVersionBytes;
-        $this->privateVersionBytes = $privateVersionBytes;
+        $this->network = $network;
     }
 
     public function getPublicVersionBytes(): int
     {
-        return $this->publicVersionBytes;
+        return $this->network->getBip32PublicVersionBytes();
     }
 
     public function getPrivateVersionBytes(): int
     {
-        return $this->privateVersionBytes;
+        return $this->network->getBip32PrivateVersionBytes();
     }
 
     public function convertVersionBytes(int $bytes): int

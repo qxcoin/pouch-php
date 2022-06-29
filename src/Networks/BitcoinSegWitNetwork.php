@@ -17,13 +17,14 @@ class BitcoinSegWitNetwork implements NetworkInterface
         $this->testnet = $testnet;
     }
 
-    public function getBip32VersionResolver(): VersionResolverInterface
+    public function getBip32PublicVersionBytes(): int
     {
-        if ($this->testnet) {
-            return new Bip32VersionResolver(0x045f1cf6, 0x045f18bc);
-        } else {
-            return new Bip32VersionResolver(0x04b24746, 0x04b2430c);
-        }
+        return $this->testnet ? 0x045f1cf6 : 0x04b24746;
+    }
+
+    public function getBip32PrivateVersionBytes(): int
+    {
+        return $this->testnet ? 0x045f18bc : 0x04b2430c;
     }
 
     public function getP2wpkhPrefix(): string
