@@ -2,17 +2,20 @@
 
 namespace QXCoin\Pouch\Networks;
 
-use QXCoin\BIP32\BitcoinVersionResolver;
-use QXCoin\BIP32\VersionResolverInterface;
 use QXCoin\Pouch\Address\TronAddressGenerator;
 use QXCoin\Pouch\PrivateKey\TronPrivateKeyGenerator;
 use QXCoin\Pouch\PublicKey\TronPublicKeyGenerator;
 
 class TronNetwork implements NetworkInterface
 {
-    public function getBip32VersionResolver(): VersionResolverInterface
+    public function getBip32PublicVersionBytes(): int
     {
-        return new BitcoinVersionResolver();
+        return $this->testnet ? 0x43587cf : 0x488b21e;
+    }
+
+    public function getBip32PrivateVersionBytes(): int
+    {
+        return $this->testnet ? 0x4358394 : 0x488ade4;
     }
 
     public function getBip44Purpose(): int
