@@ -6,8 +6,15 @@ use QXCoin\Pouch\Address\TronAddressGenerator;
 use QXCoin\Pouch\PrivateKey\TronPrivateKeyGenerator;
 use QXCoin\Pouch\PublicKey\TronPublicKeyGenerator;
 
-class TronNetwork implements NetworkInterface
+final class TronNetwork implements NetworkInterface
 {
+    private readonly bool $testnet;
+
+    public function __construct(bool $testnet = false)
+    {
+        $this->testnet = $testnet;
+    }
+
     public function getBip32PublicVersionBytes(): int
     {
         return $this->testnet ? 0x43587cf : 0x488b21e;

@@ -7,7 +7,7 @@ use kornrunner\Keccak;
 use QXCoin\Pouch\PublicKey\TronPublicKeyGenerator;
 use Tuupola\Base58;
 
-class TronAddressGenerator implements AddressGeneratorInterface
+final class TronAddressGenerator implements AddressGeneratorInterface
 {
     private TronPublicKeyGenerator $publicKeyGenerator;
     private Base58 $base58;

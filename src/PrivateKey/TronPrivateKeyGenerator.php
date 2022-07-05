@@ -4,7 +4,7 @@ namespace QXCoin\Pouch\PrivateKey;
 
 use GMP;
 
-class TronPrivateKeyGenerator implements PrivateKeyGeneratorInterface
+final class TronPrivateKeyGenerator implements PrivateKeyGeneratorInterface
 {
     public function generatePrivateKey(GMP $secret): string
     {

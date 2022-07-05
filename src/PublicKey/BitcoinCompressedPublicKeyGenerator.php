@@ -4,7 +4,7 @@ namespace QXCoin\Pouch\PublicKey;
 
 use GMP;
 
-class BitcoinCompressedPublicKeyGenerator implements PublicKeyGeneratorInterface
+final class BitcoinCompressedPublicKeyGenerator implements PublicKeyGeneratorInterface
 {
     public function generatePublicKey(GMP $x, GMP $y): string
     {

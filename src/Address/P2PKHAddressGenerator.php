@@ -7,7 +7,7 @@ use QXCoin\Pouch\Networks\BitcoinNetwork;
 use QXCoin\Pouch\PublicKey\BitcoinCompressedPublicKeyGenerator;
 use Tuupola\Base58;
 
-class P2PKHAddressGenerator implements AddressGeneratorInterface
+final class P2PKHAddressGenerator implements AddressGeneratorInterface
 {
     private BitcoinNetwork $network;
     private BitcoinCompressedPublicKeyGenerator $publicKeyGenerator;

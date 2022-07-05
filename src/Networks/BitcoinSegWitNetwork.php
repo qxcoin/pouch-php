@@ -3,12 +3,10 @@
 namespace QXCoin\Pouch\Networks;
 
 use QXCoin\Pouch\Address\P2WPKHAddressGenerator;
-use QXCoin\BIP32\VersionResolverInterface;
 use QXCoin\Pouch\PrivateKey\WIFPrivateKeyGenerator;
-use QXCoin\Pouch\Utils\Bip32VersionResolver;
 use QXCoin\Pouch\PublicKey\BitcoinCompressedPublicKeyGenerator;
 
-class BitcoinSegWitNetwork implements NetworkInterface
+final class BitcoinSegWitNetwork implements NetworkInterface
 {
     private readonly bool $testnet;
 

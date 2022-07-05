@@ -5,7 +5,7 @@ namespace QXCoin\Pouch\PrivateKey;
 use GMP;
 use Tuupola\Base58;
 
-class WIFPrivateKeyGenerator implements PrivateKeyGeneratorInterface
+final class WIFPrivateKeyGenerator implements PrivateKeyGeneratorInterface
 {
     private readonly bool $testnet;
     private Base58 $base58;

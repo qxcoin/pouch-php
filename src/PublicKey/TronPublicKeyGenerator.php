@@ -4,7 +4,7 @@ namespace QXCoin\Pouch\PublicKey;
 
 use GMP;
 
-class TronPublicKeyGenerator implements PublicKeyGeneratorInterface
+final class TronPublicKeyGenerator implements PublicKeyGeneratorInterface
 {
     public function generatePublicKey(GMP $x, GMP $y): string
     {

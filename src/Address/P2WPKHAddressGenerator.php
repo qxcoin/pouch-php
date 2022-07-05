@@ -8,7 +8,7 @@ use QXCoin\Pouch\PublicKey\BitcoinCompressedPublicKeyGenerator;
 
 use function BitWasp\Bech32\encodeSegwit;
 
-class P2WPKHAddressGenerator implements AddressGeneratorInterface
+final class P2WPKHAddressGenerator implements AddressGeneratorInterface
 {
     private BitcoinSegWitNetwork $network;
     private BitcoinCompressedPublicKeyGenerator $publicKeyGenerator;

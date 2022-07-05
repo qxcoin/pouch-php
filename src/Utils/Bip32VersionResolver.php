@@ -10,7 +10,7 @@ use QXCoin\Pouch\Networks\NetworkInterface;
  * An *Adapter* class to convert NetworkInterface to VersionResolverInterface
  * Expected by BIP32 package.
  */
-class Bip32VersionResolver implements VersionResolverInterface
+final class Bip32VersionResolver implements VersionResolverInterface
 {
     private NetworkInterface $network;
 
