@@ -3,7 +3,7 @@
 namespace QXCoin\Pouch\Wallet;
 
 /**
- * A class to represent BIP44 account segment
+ * Data class to represent BIP44 account segment.
  */
 final class Account
 {

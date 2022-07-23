@@ -51,17 +51,14 @@ class Wallet
 
         if (is_int($account)) $account = $this->getAccount($account);
 
-        // var_dump($account->privateKey);
-        // exit;
-
         $accountKey = $this->bip32->deserialize($account->privateKey);
 
         $addressPrivateKey = $this->bip32->derive($accountKey, "m/{$change}/{$addressIndex}");
         $addressPublicKey = $this->bip32->derive($addressPrivateKey, "M");
 
-        $hash = $this->addressGenerator->generateAddress($addressPublicKey->x, $addressPublicKey->y);
-        $publicKey = $this->publicKeyGenerator->generatePublicKey($addressPublicKey->x, $addressPublicKey->y);
-        $privateKey = $this->privateKeyGenerator->generatePrivateKey($addressPrivateKey->secret);
+        $hash = $this->addressGenerator->generate($addressPublicKey->x, $addressPublicKey->y);
+        $publicKey = $this->publicKeyGenerator->generate($addressPublicKey->x, $addressPublicKey->y);
+        $privateKey = $this->privateKeyGenerator->generate($addressPrivateKey->secret);
 
         return new Address($hash, $publicKey, $privateKey);
     }

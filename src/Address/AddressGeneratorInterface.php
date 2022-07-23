@@ -6,5 +6,5 @@ use GMP;
 
 interface AddressGeneratorInterface
 {
-    public function generateAddress(GMP $x, GMP $y): string;
+    public function generate(GMP $x, GMP $y): string;
 }

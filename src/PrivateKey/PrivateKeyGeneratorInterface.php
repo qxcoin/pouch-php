@@ -9,5 +9,5 @@ interface PrivateKeyGeneratorInterface
     /**
      * @return string Hexadecimal string
      */
-    public function generatePrivateKey(GMP $secret): string;
+    public function generate(GMP $secret): string;
 }

@@ -3,8 +3,8 @@
 namespace QXCoin\Pouch\Wallet;
 
 /**
- * A generic crypto currency address class to represent all kind of addresses
- * including those generated using BIP44.
+ * Data class to represent all kind of addresses including
+ * those generated using BIP44.
  *
  * This is why we store public and private keys as hexadecimal string here.
  * This class has nothing to do with BIP44 or any other strategy.

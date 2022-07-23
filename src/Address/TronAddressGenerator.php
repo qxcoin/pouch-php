@@ -4,15 +4,15 @@ namespace QXCoin\Pouch\Address;
 
 use GMP;
 use kornrunner\Keccak;
-use QXCoin\Pouch\PublicKey\TronPublicKeyGenerator;
+use QXCoin\Pouch\PublicKey\RawPublicKeyGenerator;
 use Tuupola\Base58;
 
 final class TronAddressGenerator implements AddressGeneratorInterface
 {
-    private TronPublicKeyGenerator $publicKeyGenerator;
+    private RawPublicKeyGenerator $publicKeyGenerator;
     private Base58 $base58;
 
-    public function __construct(TronPublicKeyGenerator $publicKeyGenerator)
+    public function __construct(RawPublicKeyGenerator $publicKeyGenerator)
     {
         $this->publicKeyGenerator = $publicKeyGenerator;
 
@@ -21,9 +21,9 @@ final class TronAddressGenerator implements AddressGeneratorInterface
         ]);
     }
 
-    public function generateAddress(GMP $x, GMP $y): string
+    public function generate(GMP $x, GMP $y): string
     {
-        $publicKey = $this->publicKeyGenerator->generatePublicKey($x, $y);
+        $publicKey = $this->publicKeyGenerator->generate($x, $y);
 
         $step3 = Keccak::hash(hex2bin($publicKey), 256, true);
         $step4 = substr($step3, -20);

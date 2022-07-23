@@ -9,5 +9,5 @@ interface PublicKeyGeneratorInterface
     /**
      * @return string Hexadecimal string
      */
-    public function generatePublicKey(GMP $x, GMP $y): string;
+    public function generate(GMP $x, GMP $y): string;
 }

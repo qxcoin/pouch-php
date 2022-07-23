@@ -3,8 +3,8 @@
 namespace QXCoin\Pouch\Networks;
 
 use QXCoin\Pouch\Address\TronAddressGenerator;
-use QXCoin\Pouch\PrivateKey\TronPrivateKeyGenerator;
-use QXCoin\Pouch\PublicKey\TronPublicKeyGenerator;
+use QXCoin\Pouch\PrivateKey\RawPrivateKeyGenerator;
+use QXCoin\Pouch\PublicKey\RawPublicKeyGenerator;
 
 final class TronNetwork implements NetworkInterface
 {
@@ -40,13 +40,13 @@ final class TronNetwork implements NetworkInterface
         return new TronAddressGenerator($this->getPublicKeyGenerator());
     }
 
-    public function getPublicKeyGenerator(): TronPublicKeyGenerator
+    public function getPublicKeyGenerator(): RawPublicKeyGenerator
     {
-        return new TronPublicKeyGenerator();
+        return new RawPublicKeyGenerator();
     }
 
-    public function getPrivateKeyGenerator(): TronPrivateKeyGenerator
+    public function getPrivateKeyGenerator(): RawPrivateKeyGenerator
     {
-        return new TronPrivateKeyGenerator();
+        return new RawPrivateKeyGenerator();
     }
 }

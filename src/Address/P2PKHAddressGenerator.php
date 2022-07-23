@@ -25,9 +25,9 @@ final class P2PKHAddressGenerator implements AddressGeneratorInterface
         ]);
     }
 
-    public function generateAddress(GMP $x, GMP $y): string
+    public function generate(GMP $x, GMP $y): string
     {
-        $publicKey = $this->publicKeyGenerator->generatePublicKey($x, $y);
+        $publicKey = $this->publicKeyGenerator->generate($x, $y);
 
         $hash160 = hash('ripemd160', hash('sha256', hex2bin($publicKey), true), true);
 

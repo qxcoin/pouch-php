@@ -52,6 +52,6 @@ final class BitcoinNetwork implements NetworkInterface
 
     public function getPrivateKeyGenerator(): WIFPrivateKeyGenerator
     {
-        return new WIFPrivateKeyGenerator();
+        return new WIFPrivateKeyGenerator($this->testnet);
     }
 }

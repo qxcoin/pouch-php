@@ -6,7 +6,7 @@ use GMP;
 
 final class BitcoinCompressedPublicKeyGenerator implements PublicKeyGeneratorInterface
 {
-    public function generatePublicKey(GMP $x, GMP $y): string
+    public function generate(GMP $x, GMP $y): string
     {
         $prefix = gmp_cmp(gmp_mod($y, 2), 0) === 0 ? "02" : "03";
 
