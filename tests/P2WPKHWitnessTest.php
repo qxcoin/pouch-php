@@ -19,15 +19,15 @@ class P2WPKHWitnessTest extends TestCase
         $input0->setTxId('9f96ade4b41d5433f4eda31e1738ec2b36f6e7d1420d94a6af99801a88f7f7ff');
         $input0->setOutputIndex(0);
         $input0->setSequence(0xFFFFFFEE);
-        $input0->setValue(625000000);
+        $input0->setOutputValue(625000000);
         $input0->setScriptSig('4830450221008b9d1dc26ba6a9cb62127b02742fa9d754cd3bebf337f7a55d114c8e5cdd30be022040529b194ba3f9281a99f2b1c0a19c0489bc22ede944ccf4ecbab4cc618ef3ed01');
 
         $input1 = new BitcoinTransactionInput();
         $input1->setTxId('8ac60eb9575db5b2d987e29f301b5b819ea83a5c6579d282d189cc04b8e151ef');
         $input1->setOutputIndex(1);
         $input1->setSequence(0xFFFFFFFF);
-        $input1->setValue(600000000);
-        $input1->setScriptPubKey('00141d0f172a0ecb48aee1be1f2687d2963ae33f71a1');
+        $input1->setOutputValue(600000000);
+        $input1->setOutputScriptPubKey('00141d0f172a0ecb48aee1be1f2687d2963ae33f71a1');
 
         $output0 = new BitcoinTransactionOutput();
         $output0->setValue(112340000);

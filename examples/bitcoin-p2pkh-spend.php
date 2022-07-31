@@ -27,12 +27,12 @@ require('../vendor/autoload.php');
 $input0 = new BitcoinTransactionInput();
 $input0->setTxId('e1d2b4e411445c85cb1ec421dde2cc99ed20f5c6689f1ed884b769b9422b6dc3');
 $input0->setOutputIndex(1);
-$input0->setScriptPubKey('76a9141a4e0c48c0f06d113190eb6ae5bd19f7b6951ec988ac');
+$input0->setOutputScriptPubKey('76a9141a4e0c48c0f06d113190eb6ae5bd19f7b6951ec988ac');
 
 $input1 = new BitcoinTransactionInput();
 $input1->setTxId('9a5c96f8c1da2f419202c26ba52f0d449d1de2b3a83235a6bbb03a250fe82252');
 $input1->setOutputIndex(0);
-$input1->setScriptPubKey('76a91492f44a0a518e75b1ff5e99f7d599f80d8a5ddfb788ac');
+$input1->setOutputScriptPubKey('76a91492f44a0a518e75b1ff5e99f7d599f80d8a5ddfb788ac');
 
 $output0 = new BitcoinTransactionOutput();
 $output0->setValue(19000 - 1000);

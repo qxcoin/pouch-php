@@ -17,9 +17,9 @@ final class BitcoinTransactionInput
 
     private int $outputIndex;
 
-    private int $value;
+    private int $outputValue;
 
-    private string $scriptPubKey;
+    private string $outputScriptPubKey;
 
     /**
      * @param string $scriptSig A script that unlocks the input in hexadecimal.
@@ -51,24 +51,24 @@ final class BitcoinTransactionInput
         return $this->outputIndex;
     }
 
-    public function setScriptPubKey(string $scriptPubKey): void
+    public function setOutputScriptPubKey(string $scriptPubKey): void
     {
-        $this->scriptPubKey = $scriptPubKey;
+        $this->outputScriptPubKey = $scriptPubKey;
     }
 
-    public function getScriptPubKey(): string
+    public function getOutputScriptPubKey(): string
     {
-        return $this->scriptPubKey;
+        return $this->outputScriptPubKey;
     }
 
-    public function setValue(int $value): void
+    public function setOutputValue(int $value): void
     {
-        $this->value = $value;
+        $this->outputValue = $value;
     }
 
-    public function getValue(): int
+    public function getOutputValue(): int
     {
-        return $this->value;
+        return $this->outputValue;
     }
 
     public function setScriptSig(string $scriptSig): void

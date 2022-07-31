@@ -31,7 +31,7 @@ final class P2PKHScriptSig
 
         $input = $this->transaction->getInput($inputIndex);
 
-        $input->setScriptSig($input->getScriptPubKey());
+        $input->setScriptSig($input->getOutputScriptPubKey());
 
         $message = $this->transaction->getResult() . '01000000';
 

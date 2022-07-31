@@ -44,7 +44,7 @@ final class P2WPKHWitness
         $hashOutputs = Bitcoin::hash256(hex2bin($dataOutputs));
 
         $input = $inputs[$inputIndex];
-        $inputScriptPubKey = $input->getScriptPubKey();
+        $inputScriptPubKey = $input->getOutputScriptPubKey();
 
         if (!str_starts_with($inputScriptPubKey, '00') or 44 !== strlen($inputScriptPubKey)) {
             throw new LogicException('Invalid ScriptPubKey provided, must in 0x0014{20-byte-public-key-hash160} format.');
@@ -52,7 +52,7 @@ final class P2WPKHWitness
 
         $outpoint = substr($input->getResult(), 0, 64 + 8);
         $scriptCode = '1976a9' . substr($inputScriptPubKey, 2) . '88ac';
-        $amount = Bitcoin::strToLittleEndian(str_pad(dechex($input->getValue()), 16, '0', STR_PAD_LEFT));
+        $amount = Bitcoin::strToLittleEndian(str_pad(dechex($input->getOutputValue()), 16, '0', STR_PAD_LEFT));
         $sequence = substr($input->getResult(), -8);
 
         $dataPreImage = '';
