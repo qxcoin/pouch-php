@@ -2,7 +2,6 @@
 
 namespace QXCoin\Pouch\PrivateKey;
 
-use GMP;
 use InvalidArgumentException;
 use Tuupola\Base58;
 

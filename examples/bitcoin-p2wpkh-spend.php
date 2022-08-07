@@ -5,7 +5,6 @@ use QXCoin\Pouch\Witness\P2WPKHWitness;
 use QXCoin\Pouch\Transactions\BitcoinSegWitTransaction;
 use QXCoin\Pouch\Transactions\BitcoinTransactionInput;
 use QXCoin\Pouch\Transactions\BitcoinTransactionOutput;
-use QXCoin\Pouch\Utils\Bitcoin;
 
 require('../vendor/autoload.php');
 

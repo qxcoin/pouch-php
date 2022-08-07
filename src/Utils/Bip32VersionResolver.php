@@ -2,8 +2,8 @@
 
 namespace QXCoin\Pouch\Utils;
 
-use QXCoin\BIP32\VersionResolverInterface;
 use InvalidArgumentException;
+use QXCoin\BIP32\VersionResolverInterface;
 use QXCoin\Pouch\Networks\NetworkInterface;
 
 /**
