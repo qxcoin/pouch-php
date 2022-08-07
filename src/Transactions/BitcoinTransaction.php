@@ -11,13 +11,29 @@ use QXCoin\Pouch\Utils\Bitcoin;
  */
 final class BitcoinTransaction
 {
+    /**
+     * @var Input[]
+     */
     private array $inputs;
+
+    /**
+     * @var Output[]
+     */
     private array $outputs;
+
     private int $locktime = 0x0;
 
     public function setInput(int $index, Input $input): void
     {
         $this->inputs[$index] = $input;
+    }
+
+    /**
+     * @param Input[] $inputs
+     */
+    public function setInputs(array $inputs): void
+    {
+        $this->inputs = $inputs;
     }
 
     /**
@@ -36,6 +52,14 @@ final class BitcoinTransaction
     public function setOutput(int $index, Output $output): void
     {
         $this->outputs[$index] = $output;
+    }
+
+    /**
+     * @param Output[] $outputs
+     */
+    public function setOutputs(array $outputs): void
+    {
+        $this->outputs = $outputs;
     }
 
     /**
@@ -64,15 +88,20 @@ final class BitcoinTransaction
     /**
      * @return string Hexadecimal representation of the transaction
      */
-    public function getResult(): string
+    public function getHex(): string
     {
         $hex = '';
         $hex .= Bitcoin::strToLittleEndian(str_pad(dechex(1), 8, '0', STR_PAD_LEFT));
         $hex .= Bitcoin::strToLittleEndian(str_pad(dechex(count($this->inputs)), 2, '0', STR_PAD_LEFT));
-        $hex .= join('', array_map(fn (Input $inp) => $inp->getResult(), $this->inputs));
+        $hex .= join('', array_map(fn (Input $inp) => $inp->getHex(), $this->inputs));
         $hex .= Bitcoin::strToLittleEndian(str_pad(dechex(count($this->outputs)), 2, '0', STR_PAD_LEFT));
-        $hex .= join('', array_map(fn (Output $out) => $out->getResult(), $this->outputs));
+        $hex .= join('', array_map(fn (Output $out) => $out->getHex(), $this->outputs));
         $hex .= Bitcoin::strToLittleEndian(str_pad(dechex($this->locktime), 8, '0', STR_PAD_LEFT));
         return $hex;
+    }
+
+    public function getId(): string
+    {
+        return Bitcoin::strToLittleEndian(Bitcoin::hash256(hex2bin($this->getHex())));
     }
 }

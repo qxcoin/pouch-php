@@ -58,4 +58,5 @@ $p2pkhScriptSig->apply(
 );
 
 // TXID: f114a339b8fb4d5f34161c828a8995966a65010098cd04e38d3c3590d2f08902
-var_dump($transaction->getResult());
+var_dump($transaction->getId());
+var_dump($transaction->getHex());

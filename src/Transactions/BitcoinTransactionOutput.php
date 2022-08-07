@@ -32,7 +32,7 @@ final class BitcoinTransactionOutput
     /**
      * @return string Hexadecimal representation of the transaction output
      */
-    public function getResult(): string
+    public function getHex(): string
     {
         $hex = '';
         $hex .= Bitcoin::strToLittleEndian(str_pad(dechex($this->value), 16, '0', STR_PAD_LEFT));

@@ -33,7 +33,7 @@ final class P2PKHScriptSig
 
         $input->setScriptSig($input->getOutputScriptPubKey());
 
-        $message = $this->transaction->getResult() . '01000000';
+        $message = $this->transaction->getHex() . '01000000';
 
         $hash256 = Bitcoin::hash256(hex2bin($message));
 

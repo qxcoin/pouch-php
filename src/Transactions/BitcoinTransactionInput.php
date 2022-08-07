@@ -94,7 +94,7 @@ final class BitcoinTransactionInput
     /**
      * @return string Hexadecimal representation of the transaction input
      */
-    public function getResult(): string
+    public function getHex(): string
     {
         $hex = '';
         $hex .= Bitcoin::strToLittleEndian($this->txId);

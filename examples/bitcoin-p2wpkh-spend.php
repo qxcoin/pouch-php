@@ -5,6 +5,7 @@ use QXCoin\Pouch\Witness\P2WPKHWitness;
 use QXCoin\Pouch\Transactions\BitcoinSegWitTransaction;
 use QXCoin\Pouch\Transactions\BitcoinTransactionInput;
 use QXCoin\Pouch\Transactions\BitcoinTransactionOutput;
+use QXCoin\Pouch\Utils\Bitcoin;
 
 require('../vendor/autoload.php');
 
@@ -42,4 +43,5 @@ $p2wpkhWitnessField->apply(
 );
 
 // TXID: d763056e2abb4c35a625f66377e981e7a81bed72243adde161e15079744ef697
-var_dump($transaction->getResult());
+var_dump($transaction->getId());
+var_dump($transaction->getHex());

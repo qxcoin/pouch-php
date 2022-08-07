@@ -27,19 +27,19 @@ final class P2WPKHWitness
 
         $dataPrevOuts = '';
         foreach ($inputs as $inp) {
-            $dataPrevOuts .= substr($inp->getResult(), 0, 64 + 8);
+            $dataPrevOuts .= substr($inp->getHex(), 0, 64 + 8);
         }
         $hashPrevOuts = Bitcoin::hash256(hex2bin($dataPrevOuts));
 
         $dataSequence = '';
         foreach ($inputs as $out) {
-            $dataSequence .= substr($out->getResult(), -8);
+            $dataSequence .= substr($out->getHex(), -8);
         }
         $hashSequence = Bitcoin::hash256(hex2bin($dataSequence));
 
         $dataOutputs = '';
         foreach ($outputs as $output) {
-            $dataOutputs .= $output->getResult();
+            $dataOutputs .= $output->getHex();
         }
         $hashOutputs = Bitcoin::hash256(hex2bin($dataOutputs));
 
@@ -50,13 +50,13 @@ final class P2WPKHWitness
             throw new LogicException('Invalid ScriptPubKey provided, must in 0x0014{20-byte-public-key-hash160} format.');
         }
 
-        $outpoint = substr($input->getResult(), 0, 64 + 8);
+        $outpoint = substr($input->getHex(), 0, 64 + 8);
         $scriptCode = '1976a9' . substr($inputScriptPubKey, 2) . '88ac';
         $amount = Bitcoin::strToLittleEndian(str_pad(dechex($input->getOutputValue()), 16, '0', STR_PAD_LEFT));
-        $sequence = substr($input->getResult(), -8);
+        $sequence = substr($input->getHex(), -8);
 
         $dataPreImage = '';
-        $dataPreImage .= substr($this->transaction->getResult(), 0, 8); // version
+        $dataPreImage .= substr($this->transaction->getHex(), 0, 8); // version
         $dataPreImage .= $hashPrevOuts;
         $dataPreImage .= $hashSequence;
         $dataPreImage .= $outpoint;
@@ -64,7 +64,7 @@ final class P2WPKHWitness
         $dataPreImage .= $amount;
         $dataPreImage .= $sequence;
         $dataPreImage .= $hashOutputs;
-        $dataPreImage .= substr($this->transaction->getResult(), -8); // locktime
+        $dataPreImage .= substr($this->transaction->getHex(), -8); // locktime
         $dataPreImage .= '01000000';
 
         $sigHash = Bitcoin::hash256(hex2bin($dataPreImage));
