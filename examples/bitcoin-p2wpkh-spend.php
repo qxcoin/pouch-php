@@ -28,8 +28,8 @@ $output0 = new BitcoinTransactionOutput();
 $output0->setValue(10000 - 1000);
 
 $transaction = new BitcoinSegWitTransaction();
-$transaction->setInput(0, $input0);
-$transaction->setOutput(0, $output0);
+$transaction->setInput($input0, 0);
+$transaction->setOutput($output0, 0);
 
 $p2pkhScriptPubKey = new P2WPKHScriptPubKey($transaction);
 $p2pkhScriptPubKey->apply(0, '02177df402c46ab70f6734a873058a8c906a9241f9d4826e337be2b9e21ab39e50');

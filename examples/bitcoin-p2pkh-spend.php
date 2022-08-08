@@ -38,9 +38,9 @@ $output0 = new BitcoinTransactionOutput();
 $output0->setValue(19000 - 1000);
 
 $transaction = new BitcoinTransaction();
-$transaction->setInput(0, $input0);
-$transaction->setInput(1, $input1);
-$transaction->setOutput(0, $output0);
+$transaction->setInput($input0, 0);
+$transaction->setInput($input1, 1);
+$transaction->setOutput($output0, 0);
 
 $p2pkhScriptPubKey = new P2PKHScriptPubKey($transaction);
 $p2pkhScriptPubKey->apply(0, '0217ad31ee82e10694697bca66675f51eb28ba0681a0efd336f75cc6e6209dab98');

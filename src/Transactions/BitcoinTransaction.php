@@ -23,9 +23,13 @@ final class BitcoinTransaction
 
     private int $locktime = 0x0;
 
-    public function setInput(int $index, Input $input): void
+    public function setInput(Input $input, ?int $index = null): void
     {
-        $this->inputs[$index] = $input;
+        if (isset($index)) {
+            $this->inputs[$index] = $input;
+        } else {
+            $this->inputs[] = $input;
+        }
     }
 
     /**
@@ -49,9 +53,13 @@ final class BitcoinTransaction
         return $this->inputs[$index];
     }
 
-    public function setOutput(int $index, Output $output): void
+    public function setOutput(Output $output, ?int $index = null): void
     {
-        $this->outputs[$index] = $output;
+        if (isset($index)) {
+            $this->outputs[$index] = $output;
+        } else {
+            $this->outputs[] = $output;
+        }
     }
 
     /**

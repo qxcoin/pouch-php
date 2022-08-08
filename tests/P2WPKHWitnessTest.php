@@ -38,10 +38,10 @@ class P2WPKHWitnessTest extends TestCase
         $output1->setScriptPubKey('76a9143bde42dbee7e4dbe6a21b2d50ce2f0167faa815988ac');
 
         $transaction = new BitcoinSegWitTransaction();
-        $transaction->setInput(0, $input0);
-        $transaction->setInput(1, $input1);
-        $transaction->setOutput(0, $output0);
-        $transaction->setOutput(1, $output1);
+        $transaction->setInput($input0, 0);
+        $transaction->setInput($input1, 1);
+        $transaction->setOutput($output0, 0);
+        $transaction->setOutput($output1, 1);
         $transaction->setLocktime(17);
 
         $p2wpkhWitnessField = new P2WPKHWitness($transaction);
