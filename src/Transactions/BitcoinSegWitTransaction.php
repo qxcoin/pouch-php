@@ -9,7 +9,7 @@ use QXCoin\Pouch\Utils\Bitcoin;
 /**
  * Builder class to create Bitcoin raw SegWit transactions.
  */
-final class BitcoinSegWitTransaction
+final class BitcoinSegWitTransaction implements BitcoinSegWitTransactionInterface
 {
     /**
      * @var Input[]
@@ -95,7 +95,7 @@ final class BitcoinSegWitTransaction
         return $this->locktime;
     }
 
-    public function addWitnessField(int $inputIndex, string $witnessField)
+    public function addWitnessField(int $inputIndex, string $witnessField): void
     {
         $this->witnessFields[$inputIndex] = $witnessField;
     }

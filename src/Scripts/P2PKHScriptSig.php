@@ -2,16 +2,16 @@
 
 namespace QXCoin\Pouch\Scripts;
 
-use QXCoin\Pouch\Transactions\BitcoinTransaction as Transaction;
+use QXCoin\Pouch\Transactions\BitcoinTransactionInterface as TransactionInterface;
 use kornrunner\Secp256k1;
 use Mdanter\Ecc\Serializer\Signature\DerSignatureSerializer;
 use QXCoin\Pouch\Utils\Bitcoin;
 
 final class P2PKHScriptSig
 {
-    private Transaction $transaction;
+    private TransactionInterface $transaction;
 
-    public function __construct(Transaction $transaction)
+    public function __construct(TransactionInterface $transaction)
     {
         $this->transaction = $transaction;
     }

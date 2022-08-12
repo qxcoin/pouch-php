@@ -2,14 +2,14 @@
 
 namespace QXCoin\Pouch\Scripts;
 
-use QXCoin\Pouch\Transactions\BitcoinTransaction as Transaction;
+use QXCoin\Pouch\Transactions\BitcoinTransactionInterface as TransactionInterface;
 use QXCoin\Pouch\Utils\Bitcoin;
 
 final class P2PKHScriptPubKey
 {
-    private Transaction $transaction;
+    private TransactionInterface $transaction;
 
-    public function __construct(Transaction $transaction)
+    public function __construct(TransactionInterface $transaction)
     {
         $this->transaction = $transaction;
     }

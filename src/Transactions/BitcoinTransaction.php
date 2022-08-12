@@ -9,7 +9,7 @@ use QXCoin\Pouch\Utils\Bitcoin;
 /**
  * Builder class to create Bitcoin raw transactions.
  */
-final class BitcoinTransaction
+final class BitcoinTransaction implements BitcoinTransactionInterface
 {
     /**
      * @var Input[]
