@@ -6,6 +6,7 @@ use GMP;
 use QXCoin\Pouch\Networks\BitcoinSegWitNetwork;
 use QXCoin\Pouch\PublicKey\BitcoinCompressedPublicKeyGenerator;
 use QXCoin\Pouch\Utils\Bitcoin;
+use RuntimeException;
 
 use function BitWasp\Bech32\encodeSegwit;
 
@@ -24,8 +25,13 @@ final class P2WPKHAddressGenerator implements AddressGeneratorInterface
     {
         $publicKey = $this->publicKeyGenerator->generate($x, $y);
 
-        $hash160 = Bitcoin::hash160(hex2bin($publicKey), true);
+        $data = Bitcoin::hash160(hex2bin($publicKey), true);
+        $hrp = $this->network->getP2wpkhPrefix();
 
-        return encodeSegwit($this->network->getP2wpkhPrefix(), 0, $hash160);
+        if (segwit_addr_encode($data, $hrp, 0, $address)) {
+            return $address;
+        } else {
+            throw new RuntimeException('Failed to encode SegWit address.');
+        }
     }
 }
