@@ -14,9 +14,16 @@ final class P2PKHScriptPubKey
         $this->transaction = $transaction;
     }
 
-    public function apply(int $outputIndex, string $publicKey): void
+    /**
+     * @param string $publicKeyHash Public Key or HASH160 of the Public Key
+     */
+    public function apply(int $outputIndex, string $publicKeyHash): void
     {
-        $hash160 = Bitcoin::hash160(hex2bin($publicKey));
+        if (40 === strlen($publicKeyHash)) {
+            $hash160 = $publicKeyHash;
+        } else {
+            $hash160 = Bitcoin::hash160(hex2bin($publicKeyHash));
+        }
 
         $hex = '';
         $hex .= '76'; // OP_DUP

@@ -50,20 +50,16 @@ final class BitcoinAddressParser
             throw new InvalidArgumentException('Invalid address, unsupported witness version.');
         }
 
-        return [
-            'type' => $type,
-            'data' => $data,
-            'testnet' => ('tb' === $hrp),
-        ];
+        $result = [];
+        $result['type'] = $type;
+        $result['data'] = bin2hex($data);
+        $result['testnet'] = ('tb' === $hrp);
+        return $result;
     }
 
     private function parseBase58(string $address): array
     {
-        try {
-            $decoded = $this->base58->decode($address);
-        } catch (Exception $e) {
-            throw new InvalidArgumentException('Invalid address, unable to decode.', 0, $e);
-        }
+        $decoded = $this->base58->decode($address);
 
         if (25 !== strlen($decoded)) {
             throw new InvalidArgumentException('Invalid address, wrong length.');
@@ -78,15 +74,18 @@ final class BitcoinAddressParser
             throw new InvalidArgumentException('Invalid address, wrong checksum.');
         }
 
-        switch (bindec($prefix)) {
+        $result = [];
+        $result['data'] = bin2hex($data);
+
+        switch (hexdec(bin2hex($prefix))) {
             case 0x00:
-                return ['type' => 'P2PKH', 'data' => $data, 'testnet' => false];
-            case 0x6f:
-                return ['type' => 'P2PKH', 'data' => $data, 'testnet' => true];
+                return [...$result, 'type' => 'P2PKH', 'testnet' => false];
+            case 0x6F:
+                return [...$result, 'type' => 'P2PKH', 'testnet' => true];
             case 0x05:
-                return ['type' => 'P2SH', 'data' => $data, 'testnet' => false];
-            case 0xc4:
-                return ['type' => 'P2SH', 'data' => $data, 'testnet' => true];
+                return [...$result, 'type' => 'P2SH', 'testnet' => false];
+            case 0xC4:
+                return [...$result, 'type' => 'P2SH', 'testnet' => true];
             default:
                 throw new InvalidArgumentException('Invalid address, unsupported prefix.');
         }
