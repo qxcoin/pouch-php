@@ -5,6 +5,7 @@ namespace QXCoin\Pouch\Address;
 use GMP;
 use QXCoin\Pouch\Networks\BitcoinNetwork;
 use QXCoin\Pouch\PublicKey\BitcoinCompressedPublicKeyGenerator;
+use QXCoin\Pouch\Utils\Bitcoin;
 use Tuupola\Base58;
 
 final class P2PKHAddressGenerator implements AddressGeneratorInterface
@@ -29,7 +30,7 @@ final class P2PKHAddressGenerator implements AddressGeneratorInterface
     {
         $publicKey = $this->publicKeyGenerator->generate($x, $y);
 
-        $hash160 = hash('ripemd160', hash('sha256', hex2bin($publicKey), true), true);
+        $hash160 = Bitcoin::hash160(hex2bin($publicKey), true);
 
         return $this->base58->encode($hash160);
     }

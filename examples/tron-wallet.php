@@ -15,5 +15,7 @@ $seed = $bip39->mnemonicToSeed($mnemonic);
 $wallet = $walletFactory->createWallet($seed, new TronNetwork());
 $account = $wallet->getAccount(0);
 
+// TEdRVZBuQgC9zWqgnTsn6UAFWqBBL774T8
 var_dump($wallet->getAddress(0, false, $account));
+// TDeBqznNafHHzSVvU1xJ2MGKqw5WS4SddC
 var_dump($wallet->getAddress(1, false, $account));
